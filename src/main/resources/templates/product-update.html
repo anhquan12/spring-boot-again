@@ -1,0 +1,15 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot - JPA</title>
+</head>
+<body>
+<a th:href="@{/product-list}">List Product</a><br />
+<h1>Edit Customer:</h1>
+<form th:action="@{/updateProduct}" method="POST" th:object="${product}">
+    Id: <input th:field="*{id}" readonly="true" /> <br/> <br/>
+    Name: <input th:field="*{productName}"/> <br/> <br/>
+    Price: <input th:field="*{price}"/> <br/> <br/>
+    <input type="submit" value="Submit" />
+</form>
+</body>
+</html>
