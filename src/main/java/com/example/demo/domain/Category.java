@@ -5,27 +5,26 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.util.Set;
+
 @Entity
-@Table(name = "product")
+@Table(name = "category")
 @Data
 @NoArgsConstructor
-public class Product {
-
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Product> products;
 
-//    public Product() {
+//    public Category() {
 //    }
 //
-//    public Product(String name, Category catogory) {
+//    public Category(String name) {
 //        this.name = name;
-//        this.category = category;
 //    }
 //
 //    public String getName() {
@@ -36,11 +35,11 @@ public class Product {
 //        this.name = name;
 //    }
 //
-//    public Category getCategory() {
-//        return this.category;
+//    public Set<Product> getProducts() {
+//        return this.products;
 //    }
 //
-//    public void setCategory(Category category) {
-//        this.category = category;
+//    public void setProducts(Set<Product> products) {
+//        this.products = products;
 //    }
 }
